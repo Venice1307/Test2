@@ -17,25 +17,7 @@ fn process_instruction(
     Ok(())
 }
 
-#[cfg(test)]
-mod test {
-    use {
-        super::*,
-        assert_matches::*,
-        solana_program::instruction::{AccountMeta, Instruction},
-        solana_program_test::*,
-        solana_sdk::{signature::Signer, transaction::Transaction},
-    };
 
-    #[tokio::test]
-    async fn test_transaction() {
-        let program_id = Pubkey::new_unique();
-
-        let (mut banks_client, payer, recent_blockhash) = ProgramTest::new(
-            "bpf_program_template",
-            program_id,
-            processor!(process_instruction),
-        )
         .start()
         .await;
 
